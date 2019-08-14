@@ -47,7 +47,11 @@
                     <li class="list-group-item"><b>Participantes:</b> 45</li>
                 </ul>
             <div class="card-body">
-                <a href="#" class="card-link">Detalhes...</a>
+                <p>
+                    <a href="#"><button type="button" class="btn btn-warning"><i class="fa fa-pencil-square-o" ></i> Editar </button></a>
+                    <a href="#"><button type="button" class="btn btn-primary"><i class="fa fa-check-square" ></i> Registrar participantes </button></a>
+
+                </p>
             </div>
         </div>
     </div>
