@@ -36,5 +36,22 @@
             </div>
           </div>
     </div>
-<p><a href="{{route('novo-evento')}}"><button type="button" class="btn btn-success"><i class="fa fa-calendar-plus-o" ></i> Adicionar Evento</button></a></p>
+    <p><a href="{{route('novo-evento')}}"><button type="button" class="btn btn-success"><i class="fa fa-calendar-plus-o" ></i> Adicionar Evento</button></a></p>
+
+    <div class="panel panel-success col-md-3" >
+        <div class="card" >
+            <div class="card-body">
+                <h3 class="card-title">Seminário</h3>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item"><b>Data:</b> 07/08/2019</li>
+                    <li class="list-group-item"><b>Participantes:</b> 45</li>
+                </ul>
+            <div class="card-body">
+                <a href="#" class="card-link">Detalhes...</a>
+            </div>
+        </div>
+    </div>
+
 @stop

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Evento;
+use App\Http\Requests\EventoValidator;
 
 class HomeController extends Controller
 {
@@ -38,11 +39,18 @@ class HomeController extends Controller
         return view('admin.novoEventoForm');
     }
 
-    public function addEvento(Request $request, Evento $evento)
+    public function addEvento(EventoValidator $request, Evento $evento)
     {
-        $evento->nome = $request->nomeEvento;
+        //$evento->nome = $request->nomeEvento;
 
-        dd($evento->nome);
+        //dd($evento->nome);
+        $evento->nome = $request->nome;
+        $evento->descricao = $request->descricao;
+        $evento->dataEvento = $request->dataEvento;
+        $evento->moderador = auth()->user()->id;
+        $evento->ativo = ($request->ativo == true ? true : false);
 
+        $evento->save();
+        return redirect()->route('admin');
     }
 }

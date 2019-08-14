@@ -15,22 +15,24 @@
 @section('content')
 <div class="row">
     <div class="col-md-3">
+         @include('admin.includes.alerts')
+
         <form method="POST" action="{{route('novo-evento')}}">
                 {!! csrf_field()!!}
             <div class="form-group">
-                <label for="nomeEvento">Nome do evento</label>
-                <input type="text" class="form-control" id="nomeEvento"  name="nomeEvento" placeholder="Nome do Evento">
+                <label for="nome">Nome do evento</label>
+                <input type="text" class="form-control"  name="nome" placeholder="Nome do Evento">
             </div>
             <div class="form-group">
-                <label for="descricaoEvento">Descrição do evento</label>
-                <textarea class="form-control" id="descricaoEvento" name="descricaoEvento" placeholder="Descriação do evento" rows="5"></textarea>
+                <label for="descricao">Descrição do evento</label>
+                <textarea class="form-control" name="descricao" placeholder="Descriação do evento" rows="5"></textarea>
             </div>
             <div class="form-group">
                 <label for="Data">Data do Evento</label>
-                <input type="date" class="form-control" name="data" id="data">
+                <input type="date" class="form-control" name="dataEvento">
             </div>
             <div class="form-group">
-                <input type="checkbox" class="fform-check-input" name="ativo" id="ativo" value="on" checked >
+                <input type="checkbox" class="fform-check-input" name="ativo" value="on" checked >
                 <label for="ativo">Evento Ativo</label>
             </div>
 
