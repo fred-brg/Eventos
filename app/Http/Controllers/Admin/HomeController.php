@@ -29,9 +29,12 @@ class HomeController extends Controller
     {
         $qtdAtivos = $evento->qtdEventosAtivos();
         $qtdFinalizados = $evento->qtdEventosFinalizados();
+        $homeEventos = $evento->homeEventos();
+
+        //dd($homeEventos);
 
 
-        return view('admin.homeEventos', compact('qtdAtivos','qtdFinalizados'));
+        return view('admin.homeEventos', compact('qtdAtivos','qtdFinalizados','homeEventos'));
     }
 
     public function formEvento()
@@ -50,7 +53,17 @@ class HomeController extends Controller
         $evento->moderador = auth()->user()->id;
         $evento->ativo = ($request->ativo == true ? true : false);
 
-        $evento->save();
-        return redirect()->route('admin');
+        $insert = $evento->saveEvento();
+        if($insert['success'])
+        {
+            return redirect()
+                            ->route('novo-evento')
+                            ->with('success', $insert['message']);
+        }
+        else{
+            return redirect()
+                            -> back()
+                            ->with('error',$insert['message']);
+        }
     }
 }
