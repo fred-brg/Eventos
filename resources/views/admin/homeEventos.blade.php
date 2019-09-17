@@ -34,6 +34,7 @@
     </div>
 </div>
     <p><a href="{{route('novo-evento')}}"><button type="button" class="btn btn-success"><i class="fa fa-calendar-plus-o" ></i> Adicionar Evento</button></a></p>
+    @include('admin.includes.alerts')
 <div class="row">
     @foreach ($homeEventos as $evento)
     <div class="panel panel-success col-md-4" >
@@ -48,7 +49,7 @@
                 </ul>
             <div class="card-body">
                 <p>
-                    <a href="#"><button type="button" class="btn btn-warning"><i class="fa fa-pencil-square-o" ></i> Editar </button></a>
+                <a href="{{route('editar-evento',$evento->id)}}"><button type="button" class="btn btn-warning"><i class="fa fa-pencil-square-o" ></i> Editar </button></a>
                     <a href="#"><button type="button" class="btn btn-primary"><i class="fa fa-check-square" ></i> Registrar participantes </button></a>
 
                 </p>

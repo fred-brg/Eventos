@@ -31,9 +31,6 @@ class HomeController extends Controller
         $qtdFinalizados = $evento->qtdEventosFinalizados();
         $homeEventos = $evento->homeEventos();
 
-        //dd($homeEventos);
-
-
         return view('admin.homeEventos', compact('qtdAtivos','qtdFinalizados','homeEventos'));
     }
 
@@ -44,9 +41,6 @@ class HomeController extends Controller
 
     public function addEvento(EventoValidator $request, Evento $evento)
     {
-        //$evento->nome = $request->nomeEvento;
-
-        //dd($evento->nome);
         $evento->nome = $request->nome;
         $evento->descricao = $request->descricao;
         $evento->dataEvento = $request->dataEvento;
@@ -63,7 +57,46 @@ class HomeController extends Controller
         else{
             return redirect()
                             -> back()
-                            ->with('error',$insert['message']);
+                            -> with('error',$insert['message']);
         }
+    }
+    public function editarEvento($id, Evento $evento)
+    {
+        $request = $evento->getEventoID($id);
+        
+        if(empty($request[0]))
+        {
+            $message = 'Evento não encontrado';
+            return redirect()
+                            -> route('admin')
+                            -> with('error',$message);
+        }
+        else
+        {
+            return view('admin.updateEventoForm', compact('request'));
+        }
+    }
+    public function updateEvento(EventoValidator $request, Evento $evento)
+    {
+        $evento = Evento::findOrFail($request->id);
+        $evento->nome = $request->nome;
+        $evento->descricao = $request->descricao;
+        $evento->dataEvento = $request->dataEvento;
+        $evento->moderador = auth()->user()->id;
+        $evento->ativo = ($request->ativo == true ? true : false);
+
+        $update = $evento->updateEvento();
+        if($update['success'])
+        {
+            return redirect()
+                            ->route('editar-evento',['id' => $evento->id])
+                            ->with('success', $update['message']);
+        }
+        else{
+            return redirect()
+                            -> back()
+                            -> with('error',$update['message']);
+        }
+
     }
 }

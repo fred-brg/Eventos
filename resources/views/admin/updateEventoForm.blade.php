@@ -17,26 +17,27 @@
     <div class="col-md-3">
          @include('admin.includes.alerts')
 
-        <form method="POST" action="{{route('novo-evento')}}">
+        <form method="POST" action="{{route('update-evento')}}">
                 {!! csrf_field()!!}
+                <input type="hidden" name="id" value="{{$request[0]->id}}">
             <div class="form-group">
                 <label for="nome">Nome do evento</label>
-                <input type="text" class="form-control"  name="nome" placeholder="Nome do Evento" >
+                <input type="text" class="form-control"  name="nome" placeholder="Nome do Evento" value="{{$request[0]->nome}}">
             </div>
             <div class="form-group">
                 <label for="descricao">Descrição do evento</label>
-                <textarea class="form-control" name="descricao" placeholder="Descriação do evento" rows="5"></textarea>
+                <textarea class="form-control" name="descricao" placeholder="Descriação do evento" rows="5" >{{$request[0]->descricao}}</textarea>
             </div>
             <div class="form-group">
                 <label for="Data">Data do Evento</label>
-                <input type="date" class="form-control" name="dataEvento">
+                <input type="date" class="form-control" name="dataEvento" value="{{$request[0]->dataEvento}}">
             </div>
             <div class="form-group">
-                <input type="checkbox" class="fform-check-input" name="ativo" value="on" checked >
+            <input type="checkbox" class="form-check-input" name="ativo" {{$request[0]->ativo === 1 ? "checked" : ""}} >
                 <label for="ativo">Evento Ativo</label>
             </div>
 
-            <button type="submit" class="btn btn-success">Criar Evento</button>
+            <button type="submit" class="btn btn-success">Atualizar Evento</button>
         </form>
     </div>
 </div>

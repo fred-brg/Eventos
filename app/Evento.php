@@ -30,6 +30,14 @@ class Evento extends Model
                     ->where('moderador', auth()->user()->id)->get();
     }
 
+    public function getEventoID($id)
+    {
+        return $this
+                    ->where('id', $id)
+                    ->where('moderador', auth()->user()->id)
+                    ->get();
+    }
+
 
     public function saveEvento()
     {
@@ -44,6 +52,22 @@ class Evento extends Model
             return [
                 'success' => false,
                 'message' => 'Falha ao cadastrar evento!'
+            ];
+        }
+    }
+    public function updateEvento()
+    {
+        if ($this->save())
+        {
+            return [
+                'success' => true,
+                'message' => 'Evento atualizado com sucesso!'
+            ];
+        }
+        else{
+            return [
+                'success' => false,
+                'message' => 'Falha ao atualizar evento!'
             ];
         }
     }
