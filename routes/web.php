@@ -23,3 +23,4 @@ Route::get('/admin/novo-evento', 'Admin\HomeController@formEvento')->name('novo-
 Route::post('/admin/novo-evento', 'Admin\HomeController@addEvento')->name('novo-evento');
 Route::get('/admin/editar-evento/{id}', 'Admin\HomeController@editarEvento')->name('editar-evento');
 Route::post('/admin/update-evento', 'Admin\HomeController@updateEvento')->name('update-evento');
+Route::get('/admin/registrar-presenca/{id}', 'Admin\HomeController@registrarPresenca')->name('registrar-presenca');

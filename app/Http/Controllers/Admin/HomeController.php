@@ -99,4 +99,20 @@ class HomeController extends Controller
         }
 
     }
+
+    public function registrarPresenca($id, Evento $evento){
+        $request = $evento->getEventoID($id);
+        
+        if(empty($request[0]))
+        {
+            $message = 'Evento não encontrado';
+            return redirect()
+                            -> route('admin')
+                            -> with('error',$message);
+        }
+        else
+        {
+            return view('admin.registrarPresenca', compact('request'));
+        }
+    }
 }

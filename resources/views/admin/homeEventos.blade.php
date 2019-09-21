@@ -37,20 +37,20 @@
     @include('admin.includes.alerts')
 <div class="row">
     @foreach ($homeEventos as $evento)
-    <div class="panel panel-success col-md-4" >
-        <div class="card" >
+    <div class="panel panel-success col col-md-4" style="min-height: 300px" >
+        <div class="card">
             <div class="card-body">
                 <h3 class="card-title">{{$evento->nome}}</h3>
             <p class="card-text">{{ substr($evento->descricao, 0, 200)}} "..."</p>
             </div>
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item"><b>Data: </b> {{date($evento->dataEvento)}}</li>
+                    <li class="list-group-item"><b>Data: </b> {{date('d-m-Y', strtotime($evento->dataEvento))}}</li>
                     <li class="list-group-item"><b>Participantes:</b> 45</li>
                 </ul>
             <div class="card-body">
                 <p>
                 <a href="{{route('editar-evento',$evento->id)}}"><button type="button" class="btn btn-warning"><i class="fa fa-pencil-square-o" ></i> Editar </button></a>
-                    <a href="#"><button type="button" class="btn btn-primary"><i class="fa fa-check-square" ></i> Registrar participantes </button></a>
+                    <a href="{{route('registrar-presenca',$evento->id)}}"><button type="button" class="btn btn-primary"><i class="fa fa-check-square" ></i> Registrar participantes </button></a>
 
                 </p>
             </div>
