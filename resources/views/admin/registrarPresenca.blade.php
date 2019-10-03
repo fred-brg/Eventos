@@ -41,12 +41,13 @@
                             <div class="form-group">
                                     <label for="tipo">Tipo de participante:</label>
                                     <select class="form-control" name="tipo">
-                                        <option>Aluno</option>
-                                        <option>Professor</option>
-                                        <option>Comunidade</option>
+                                        <option value="1">Aluno</option>
+                                        <option value="2">Professor</option>
+                                        <option value="3">Externo</option>
+                                        <option value="3">Servidor</option>
                                     </select>
                             </div>
-                            <button type="submit" class="btn btn-success">Cadastrar</button>
+                            <button type="submit" class="btn btn-success">Cadastrar e registrar presença</button>
                     </form>
             </div>
         </div>
@@ -70,8 +71,25 @@
                     </div>
             </div>
         </div>
-        <div class="col-md-4">
-            
+        <div class="col-md-1"></div>
+        <div div class="panel panel-success col-md-4">
+                <div class="card">
+                        <div class="card-body">
+                            <h3 class="card-title">Participantes encontrados</h3>
+                        </div>
+                        <div class="card-body">
+                                <form method="POST" action="">
+                                        {!! csrf_field()!!}
+                                        <div class="form-group">
+                                                <div class="form-check">
+                                                        <input class="form-check-input position-static" type="checkbox" id="blankCheckbox" value="1" > <span>Frederico Borges - 073.007.626-11</span> <br/>
+                                                        <input class="form-check-input position-static" type="checkbox" id="blankCheckbox" value="2" > <span>Rosilaine - 073.007.626-11</span>
+                                                </div>
+                                        </div>
+                                        <button type="submit" class="btn btn-success">Buscar</button>
+                                </form>
+                        </div>
+                </div>
         </div>
 
     </div>
